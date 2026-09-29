@@ -1,0 +1,11 @@
+add_requires("libspng")
+add_requires("libjpeg-turbo")
+
+target("dcs229.common")
+    set_languages("cxxlatest")
+    set_kind("static")
+    add_packages("libspng", {public = true})
+    add_packages("libjpeg-turbo", {public = true})
+    add_files("src/**.cpp")
+    add_headerfiles("src/(**.hpp)", {public = true})
+    add_includedirs("src", {public = true})
