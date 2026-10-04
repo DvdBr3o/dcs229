@@ -1,0 +1,4 @@
+[submodule "dvdbr3o.typ"]
+	path = dvdbr3o.typ
+	url = git@github.com:DvdBr3o/dvdbr3o.typ.git
+	branch = master
