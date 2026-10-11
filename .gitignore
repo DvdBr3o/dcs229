@@ -31,7 +31,14 @@
 # benchmark data (downloaded from simdjson-data)
 benchmarks/**/data/
 
+# Python cache
+__pycache__/
+*.pyc
+
 # typst report outputs
 0305/main.pdf
 0306/main.pdf
 project3/main.pdf
+0403/report.pdf
+0404/report.pdf
+project4/main.pdf
