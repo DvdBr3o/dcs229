@@ -1,0 +1,29 @@
+
+=== ex  (example_a.png vs example_b.png) ===
+image (256, 256)   template (44, 49)   padded (299, 304)
+  plain (textbook): peak     (106, 97)  NCC 1.0000  max|win-tpl|   0.0  peak/mean    110.2  (0.029 s)
+  mean-removed    : peak     (106, 97)  NCC 1.0000  max|win-tpl|   0.0  peak/mean 61892851810011232.0  (0.027 s)
+
+=== sup  (Fig0441a.jpg vs Fig0441b.png) ===
+image (256, 256)   template (44, 49)   padded (299, 304)
+  plain (textbook): peak    (106, 102)  NCC 1.0000  max|win-tpl|   9.0  peak/mean     63.7  (0.025 s)
+  mean-removed    : peak    (106, 102)  NCC 1.0000  max|win-tpl|   9.0  peak/mean -26180581239287592.0  (0.026 s)
+
+=== Exercises 4.22 / 4.23 ===
+textbook form (F * conj(T)): peak (106, 97)
+swapped  (conj(F) * T)     : peak (193, 207)
+mirror check: full + swapped - 1 = (298, 303)  (pad size (299, 304))
+peak of the mirrored form: 2.129e+07  (textbook form 2.129e+07)
+exercise 4.22 (missing (-1)^u) peak: (282, 97)  value 1.415e+06  / textbook 2.129e+07  = 0.066
+
+done
+[1] DFT vs direct: max difference 5.964e-07   DFT 0.0260s, direct 0.3101s, speedup 11.9x
+[2] DFT correlation time: {64: 0.0018, 128: 0.0063, 256: 0.0242, 512: 0.0872, 1024: 0.3897}
+    log-log slope = 1.92  (two transforms -> about n^2 log n)
+[3] bright background (contrast inverted): plain peak (293, 302)  peak/mean 1.4
+    normalised (template matched to the inverted image) peak (106, 97)
+[4] same code, two templates: [('T', (106, 97)), ('K', (114, 148))]
+[5] crop (190, 230)  peak (76, 77)  NCC 1.0000
+[5] crop (189, 229)  peak (75, 76)  NCC 1.0000
+
+done

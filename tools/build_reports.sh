@@ -15,7 +15,7 @@ cd "$root"
 
 projects=("$@")
 if [ ${#projects[@]} -eq 0 ]; then
-  projects=(0305 0306 project3)
+  projects=(0305 0306 project3 0403 0404 0405 project4)
 fi
 
 for project in "${projects[@]}"; do
