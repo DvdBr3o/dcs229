@@ -104,7 +104,9 @@ def rgb_to_chromaticity(img: np.ndarray) -> np.ndarray:
     """归一化 RGB 色度 (r, g) = (R, G) / (R + G + B)。"""
     rgb = _as_float_rgb(img)
     total = rgb.sum(axis=-1, keepdims=True)
-    return np.divide(rgb[..., :2], total, out=np.zeros_like(rgb[..., :2]), where=total > 1e-6)
+    return np.divide(
+        rgb[..., :2], total, out=np.zeros_like(rgb[..., :2]), where=total > 1e-6
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -231,7 +233,11 @@ class LabEllipseSplit(Split):
         u = cos_t * da + sin_t * db
         v = -sin_t * da + cos_t * db
         radius = (u / self.axes[0]) ** 2 + (v / self.axes[1]) ** 2
-        return (radius <= 1.0) & (lightness >= self.l_range[0]) & (lightness <= self.l_range[1])
+        return (
+            (radius <= 1.0)
+            & (lightness >= self.l_range[0])
+            & (lightness <= self.l_range[1])
+        )
 
 
 class ChromaticitySplit(Split):
@@ -294,15 +300,16 @@ def colorspace_split(
     return Image.fromarray(np.dstack((output, alpha)))
 
 
-# ---------------------------------------------------------------------------
-# 演示参数：手动修改这里；每次只保留一个常量，其余候选留在注释里
-# ---------------------------------------------------------------------------
-
-# asian_6.png 对应 YCbCrBoxSplit()，asian_13.png 对应 HSVSplit()
 PROJECT_DIR = Path(__file__).resolve().parent
+
+# Recommended Splits
+# asian_1.png => YCbCrEllipseSplit()
+# asian_6.png => YCbCrBoxSplit()
+# asian_13.png => HSVSplit()
+
+IMAGE_PATH = PROJECT_DIR / "public/asian_1.png"
 # IMAGE_PATH = PROJECT_DIR / "public/asian_6.png"
 # IMAGE_PATH = PROJECT_DIR / "public/asian_13.png"
-IMAGE_PATH = PROJECT_DIR / "public/asian_1.png"
 
 # SPLIT = SphereSplit()
 # SPLIT = YCbCrBoxSplit()
