@@ -313,10 +313,10 @@ IMAGE_PATH = PROJECT_DIR / "public/asian_1.png"
 
 # SPLIT = SphereSplit()
 # SPLIT = YCbCrBoxSplit()
-# SPLIT = HSVSplit()
+SPLIT = HSVSplit()
 # SPLIT = LabEllipseSplit()
 # SPLIT = ChromaticitySplit()
-SPLIT = YCbCrEllipseSplit()
+# SPLIT = YCbCrEllipseSplit()
 
 # MEDIAN_SIZE = 1  # 关闭中值滤波
 MEDIAN_SIZE = 5
